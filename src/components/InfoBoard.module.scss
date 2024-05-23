@@ -1,0 +1,30 @@
+.container {
+	width: 97%;
+	margin: auto;
+	height: auto;
+	.container-info {
+		width: 100%;
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+
+		.content {
+			display: grid;
+			grid-template-columns: 5fr 1fr;
+			align-items: center;
+			border: 1px solid #ccc;
+			padding: 12px;
+			margin: 0 8px;
+			border-radius: 4px;
+			box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.2);
+			.content-icon {
+				text-align: center;
+			}
+			h3 {
+				margin: 0;
+			}
+			p {
+				margin: 0;
+			}
+		}
+	}
+}
