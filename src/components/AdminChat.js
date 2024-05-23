@@ -91,7 +91,7 @@ const AdminChat = () => {
 	const fetchRooms = async () => {
 		try {
 			const res = await apiRequest(
-				'http://localhost:8000/api/get-rooms',
+				'http://server-web-tmdt-0d81a84104bb.herokuapp.com/api/get-rooms',
 				'get'
 			);
 			if (res.rooms) {
