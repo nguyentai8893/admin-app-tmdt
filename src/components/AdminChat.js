@@ -16,6 +16,7 @@ import { useNavigate } from 'react-router-dom';
 
 const cx = classNames.bind(styles);
 const socket = io('http://localhost:8000');
+const apiUrl = process.env.REACT_APP_API_URL;
 
 const AdminChat = () => {
 	const navigate = useNavigate();
@@ -90,10 +91,7 @@ const AdminChat = () => {
 
 	const fetchRooms = async () => {
 		try {
-			const res = await apiRequest(
-				'http://server-web-tmdt-0d81a84104bb.herokuapp.com/api/get-rooms',
-				'get'
-			);
+			const res = await apiRequest(`${apiUrl}/api/get-rooms`, 'get');
 			if (res.rooms) {
 				setRooms(res.rooms);
 			}
@@ -116,7 +114,7 @@ const AdminChat = () => {
 	const fetchMessages = async (roomId) => {
 		try {
 			const res = await apiRequest(
-				`http://localhost:8000/api/get-messages?roomId=${roomId}`,
+				`${apiUrl}/api/get-messages?roomId=${roomId}`,
 				'get'
 			);
 			if (res) {
