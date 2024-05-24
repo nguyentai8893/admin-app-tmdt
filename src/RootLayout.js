@@ -22,6 +22,7 @@ const RootLayout = () => {
 	useEffect(() => {
 		const fetchProducts = async () => {
 			const res = await apiRequest(`${apiUrl}/api/products`, 'get');
+			console.log(res);
 			if (res) {
 				dispatch(infoAction.products(res.products));
 			}
