@@ -12,7 +12,6 @@ const SideBar = () => {
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 	const handlerLogout = () => {
-		console.log('gdgfgfd');
 		navigate('/login');
 		dispatch(loginAction.onLogout());
 	};

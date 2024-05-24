@@ -10,6 +10,8 @@ import { infoAction } from './store/infoRenderSlice.js';
 import { loginAction } from './store/loginUserSlice.js';
 const cx = classNames.bind(styles);
 
+const apiUrl = process.env.REACT_APP_API_URL;
+
 const RootLayout = () => {
 	const dispatch = useDispatch();
 	const user = useSelector((state) => state.auth.user);
@@ -19,25 +21,19 @@ const RootLayout = () => {
 	const { loading, error, apiRequest } = useAxios();
 	useEffect(() => {
 		const fetchProducts = async () => {
-			const res = await apiRequest('http://localhost:8000/api/products', 'get');
+			const res = await apiRequest(`${apiUrl}/api/products`, 'get');
 			if (res) {
 				dispatch(infoAction.products(res.products));
 			}
 		};
 		const fetchOrder = async () => {
-			const resOrder = await apiRequest(
-				'http://localhost:8000/api/get-order',
-				'get'
-			);
+			const resOrder = await apiRequest(`${apiUrl}/api/get-order`, 'get');
 			if (resOrder.status == 200) {
 				dispatch(infoAction.order(resOrder.order));
 			}
 		};
 		const fetchUser = async () => {
-			const resUser = await apiRequest(
-				'http://localhost:8000/api/get-user-client',
-				'get'
-			);
+			const resUser = await apiRequest(`${apiUrl}/api/get-user-client`, 'get');
 			if (resUser) {
 				dispatch(infoAction.user(resUser.users));
 			}

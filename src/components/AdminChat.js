@@ -15,8 +15,8 @@ import useAxios from '../hook/useAxios';
 import { useNavigate } from 'react-router-dom';
 
 const cx = classNames.bind(styles);
-const socket = io('http://localhost:8000');
 const apiUrl = process.env.REACT_APP_API_URL;
+const socket = io(apiUrl);
 
 const AdminChat = () => {
 	const navigate = useNavigate();

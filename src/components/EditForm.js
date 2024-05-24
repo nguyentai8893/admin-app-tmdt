@@ -8,6 +8,7 @@ import { modalAction } from '../store/modalSlice';
 import useAxios from '../hook/useAxios';
 import { infoAction } from '../store/infoRenderSlice';
 const cx = classNames.bind(styles);
+const apiUrl = process.env.REACT_APP_API_URL;
 
 const EditForm = ({ id }) => {
 	const { apiRequest } = useAxios();
@@ -24,7 +25,7 @@ const EditForm = ({ id }) => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		const res = await apiRequest(
-			`http://localhost:8000/api/edit-user/${id}`,
+			`${apiUrl}/api/edit-user/${id}`,
 			'post',
 			formData
 		);

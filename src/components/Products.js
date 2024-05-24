@@ -8,6 +8,7 @@ import Modal from './Modal';
 import useAxios from '../hook/useAxios';
 import { infoAction } from '../store/infoRenderSlice';
 const cx = classNames.bind(styles);
+const apiUrl = process.env.REACT_APP_API_URL;
 
 const Products = () => {
 	const dispatch = useDispatch();
@@ -19,8 +20,6 @@ const Products = () => {
 		if (id) {
 			dispatch(modalAction.openForm(id));
 		}
-
-		console.log('iddffffffffffff', id);
 		dispatch(modalAction.openModal());
 	};
 	const products = useSelector((state) => state.info.productsState);
@@ -31,11 +30,9 @@ const Products = () => {
 
 		if (shouldDelete) {
 			try {
-				const res = await apiRequest(
-					'http://localhost:8000/api/delete-product',
-					'post',
-					{ id }
-				);
+				const res = await apiRequest(`${apiUrl}/api/delete-product`, 'post', {
+					id,
+				});
 				console.log(res);
 
 				if (res.status === 200) {

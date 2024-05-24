@@ -8,6 +8,7 @@ import { modalAction } from '../store/modalSlice';
 import { infoAction } from '../store/infoRenderSlice';
 
 const cx = classNames.bind(styles);
+const apiUrl = process.env.REACT_APP_API_URL;
 const ModalContent = () => {
 	const [imageUrl, setImageUrl] = useState('');
 	const [postData, setPostData] = useState({
@@ -33,7 +34,7 @@ const ModalContent = () => {
 
 		try {
 			const res = await axios.post(
-				'http://localhost:8000/api/upload-image',
+				`${apiUrl}/api/upload-image`,
 				formData,
 
 				{
@@ -62,7 +63,7 @@ const ModalContent = () => {
 				price,
 			};
 			const res = await apiRequest(
-				'http://localhost:8000/api/add-product',
+				`${apiUrl}/api/add-product`,
 				'post',
 				formDataForServer
 			);

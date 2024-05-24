@@ -6,6 +6,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import useAxios from '../hook/useAxios';
 const cx = classNames.bind(styles);
 
+const apiUrl = process.env.REACT_APP_API_URL;
+
 const Register = () => {
 	const navigate = useNavigate();
 	const [data, setData] = useState(null);
@@ -35,7 +37,7 @@ const Register = () => {
 	const handlerSignUP = async () => {
 		try {
 			const res = await apiRequest(
-				'http://localhost:8000/api/admin-register',
+				`${apiUrl}/api/admin-register`,
 				'post',
 				postData
 			);

@@ -14,7 +14,6 @@ const Users = () => {
 	const users = useSelector((state) => state.info.userState);
 	const isEdit = useSelector((state) => state.modal.isEdit);
 	const dispatch = useDispatch();
-	console.log(users);
 	const handleEdit = (id) => {
 		setIdEdit(id);
 		dispatch(modalAction.openFormEdit());

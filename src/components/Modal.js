@@ -9,6 +9,7 @@ import axios from 'axios';
 import { infoAction } from '../store/infoRenderSlice';
 
 const cx = classNames.bind(styles);
+const apiUrl = process.env.REACT_APP_API_URL;
 
 const Modal = ({ isOpen, children, id }) => {
 	const [imageUrl, setImageUrl] = useState('');
@@ -28,8 +29,8 @@ const Modal = ({ isOpen, children, id }) => {
 	console.log(id);
 
 	const URL = id
-		? `http://localhost:8000/api/update-product/${id}`
-		: 'http://localhost:8000/api/add-product';
+		? `${apiUrl}/api/update-product/${id}`
+		: `${apiUrl}/api/add-product`;
 	const { loading, error, apiRequest } = useAxios();
 	const dispatch = useDispatch();
 
@@ -43,7 +44,7 @@ const Modal = ({ isOpen, children, id }) => {
 
 		try {
 			const res = await axios.post(
-				'http://localhost:8000/api/upload-image',
+				`${apiUrl}/api/upload-image`,
 				formData,
 
 				{
