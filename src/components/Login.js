@@ -40,7 +40,6 @@ const Login = () => {
 				dispatch(loginAction.onLogin(res.user));
 				navigate('/dashboard');
 			}
-			localStorage.setItem('user', JSON.stringify(res.user));
 		} catch (error) {
 			console.log(error);
 		}
