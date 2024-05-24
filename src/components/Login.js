@@ -7,7 +7,7 @@ import { useDispatch } from 'react-redux';
 import { loginAction } from '../store/loginUserSlice';
 
 const cx = classNames.bind(styles);
-
+const apiUrl = process.env.REACT_APP_API_URL;
 const Login = () => {
 	const dispatch = useDispatch();
 
@@ -22,11 +22,7 @@ const Login = () => {
 	// sử lý input data và validate
 	const handlerSignIn = async () => {
 		try {
-			const res = await apiRequest(
-				'https://server-web-tmdt-0d81a84104bb.herokuapp.com/api/login',
-				'post',
-				postData
-			);
+			const res = await apiRequest(`${apiUrl}/api/login`, 'post', postData);
 			console.log(res);
 			if (res.status == false) {
 				setErr(res.message);
