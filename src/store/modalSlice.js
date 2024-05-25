@@ -18,19 +18,22 @@ const modalSlice = createSlice({
 			state.isModal = false;
 		},
 		openForm(state, actions) {
+			state.isModal = true;
 			state.isOpenFormUpdate = true;
 			state.idUpdate = actions.payload;
 		},
 		closeForm(state) {
+			state.isModal = true;
+
 			state.isOpenFormUpdate = false;
 			state.idUpdate = null;
 		},
 		openFormEdit(state) {
 			state.isEdit = true;
 		},
-		closeForm(state) {
-			state.isEdit = false;
-		},
+		// closeForm(state) {
+		// 	state.isEdit = false;
+		// },
 	},
 });
 export const modalAction = modalSlice.actions;
