@@ -16,9 +16,9 @@ const RootLayout = () => {
 	const dispatch = useDispatch();
 	const user = useSelector((state) => state.auth.user);
 	if (!user) {
-		const userLocal = localStorage.getItem('user');
-		console.log(userLocal);
-		dispatch(loginAction.onLogin(userLocal));
+		dispatch(
+			loginAction.onLogin(JSON.parse(localStorage.getItem('user')) || [])
+		);
 	}
 	const { loading, error, apiRequest } = useAxios();
 	useEffect(() => {

@@ -12,7 +12,8 @@ const loginSlicce = createSlice({
 		onLogin(state, actions) {
 			state.isLogin = true;
 			state.user = actions.payload;
-			localStorage.setItem('user', JSON.stringify(actions.payload));
+			const user = actions.payload;
+			localStorage.setItem('user', JSON.stringify(user));
 		},
 		onLogout(state) {
 			state.user = null;
