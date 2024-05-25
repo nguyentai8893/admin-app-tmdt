@@ -12,6 +12,7 @@ const cx = classNames.bind(styles);
 const InfoBoard = () => {
 	const users = useSelector((state) => state.info.userState);
 	const order = useSelector((state) => state.info.orderState);
+	console.log('order', order);
 
 	console.log(order);
 	let totalPrice = 0;

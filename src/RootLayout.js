@@ -31,6 +31,9 @@ const RootLayout = () => {
 		};
 		const fetchOrder = async () => {
 			const resOrder = await apiRequest(`${apiUrl}/api/get-order`, 'get');
+
+			console.log('res', resOrder);
+
 			if (resOrder.status == 200) {
 				dispatch(infoAction.order(resOrder.order));
 			}
