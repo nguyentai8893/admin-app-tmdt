@@ -10,7 +10,7 @@
 	}
 	.container-content {
 		width: 96%;
-		height: 80%;
+		height: 100%;
 		margin: 20px;
 		border: 0.5px solid #ccc;
 		border-radius: 6px;
@@ -18,6 +18,8 @@
 		display: grid;
 		grid-template-columns: 1fr 6fr;
 		.sidebar {
+			width: 100%;
+			height: 100%;
 			.sidebar-content {
 				padding-top: 10px;
 				width: 100%;
@@ -78,7 +80,7 @@
 		.chat-content {
 			border-left: 1px solid #ccc;
 			width: 100%;
-			height: 770px;
+			height: 100%;
 			margin: 10px;
 			.chat-messages {
 				width: 98%;
