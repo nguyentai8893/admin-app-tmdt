@@ -82,6 +82,14 @@ const AdminChat = () => {
 			const res = await apiRequest(`${apiUrl}/api/get-rooms`, 'get');
 			if (res.rooms) {
 				setRooms(res.rooms);
+				// Chọn phòng đầu tiên mặc định
+				if (res.rooms.length > 0) {
+					const firstRoom = res.rooms[0].roomId;
+					setRoomId(firstRoom);
+					setSelectedRoom(firstRoom);
+					socket.emit('joinRoom', firstRoom);
+					fetchMessages(firstRoom);
+				}
 			}
 		} catch (error) {
 			console.error(error);
