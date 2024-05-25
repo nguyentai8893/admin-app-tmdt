@@ -30,7 +30,7 @@ const RootLayout = () => {
 			}
 		};
 		const fetchOrder = async () => {
-			const resOrder = await apiRequest(`${apiUrl}/api/get-order`, 'get');
+			const resOrder = await apiRequest(`${apiUrl}/api/get-orders`, 'get');
 
 			console.log('res', resOrder);
 
