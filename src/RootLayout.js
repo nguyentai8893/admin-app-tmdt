@@ -14,7 +14,7 @@ const apiUrl = process.env.REACT_APP_API_URL;
 
 const RootLayout = () => {
 	const dispatch = useDispatch();
-	const user = useSelector((state) => state.auth.user);
+	const user = localStorage.getItem('user');
 	if (!user) {
 		const userLocal = localStorage.getItem('user');
 		console.log(userLocal);
