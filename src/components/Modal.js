@@ -23,7 +23,7 @@ const Modal = ({ isOpen, children, id }) => {
 		quantity: '',
 	});
 	const isOpenFormUpdate = useSelector((state) => state.modal.isOpenFormUpdate);
-
+	const idUpdate = useSelector((state) => state.modal.idUpdate);
 	const products = useSelector((state) => state.info.productsState);
 	const product = products.filter((f) => f._id == id);
 	console.log(id);
@@ -106,11 +106,7 @@ const Modal = ({ isOpen, children, id }) => {
 				<div className={cx('modal-overlay')}>
 					<div className={cx('modal-container')}>
 						<div className={cx('title-button')}>
-							{isOpenFormUpdate ? (
-								<h4>Update Product</h4>
-							) : (
-								<h4>Add New Product</h4>
-							)}
+							{idUpdate ? <h4>Update Product</h4> : <h4>Add New Product</h4>}
 							<button className={cx('modal-close-btn')} onClick={onClose}>
 								Close
 							</button>

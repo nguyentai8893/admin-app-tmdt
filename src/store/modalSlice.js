@@ -20,11 +20,13 @@ const modalSlice = createSlice({
 		openForm(state, actions) {
 			state.isModal = true;
 			state.isOpenFormUpdate = true;
-			state.idUpdate = actions.payload;
+			const idUpdate = actions.payload;
+			if (idUpdate) {
+				state.idUpdate = idUpdate;
+			}
 		},
 		closeForm(state) {
-			state.isModal = true;
-
+			state.isModal = false;
 			state.isOpenFormUpdate = false;
 			state.idUpdate = null;
 		},
