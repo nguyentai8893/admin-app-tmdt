@@ -14,13 +14,12 @@ const Products = () => {
 	const dispatch = useDispatch();
 	const { apiRequest } = useAxios();
 	const isOpenModal = useSelector((state) => state.modal.isModal);
-	const isOpenFormUpdate = useSelector((state) => state.modal.isOpenFormUpdate);
 	const idUpdate = useSelector((state) => state.modal.idUpdate);
 	const handleOpenModal = (id) => {
 		if (id) {
 			dispatch(modalAction.openForm(id));
 		}
-		dispatch(modalAction.openModal());
+		dispatch(modalAction.openForm());
 	};
 	const products = useSelector((state) => state.info.productsState);
 	const handleDelete = async (id) => {
@@ -91,8 +90,6 @@ const Products = () => {
 											Delelte
 										</button>
 									</td>
-
-									{/* {isOpenFormUpdate ? <UpdateForm id={item._id} /> : null} */}
 								</tr>
 							);
 						})}
@@ -100,9 +97,7 @@ const Products = () => {
 				</table>
 				{isOpenModal ? (
 					<Modal isOpen={isOpenModal} id={idUpdate ? idUpdate : null}></Modal>
-				) : (
-					''
-				)}
+				) : null}
 			</div>
 		</>
 	);
