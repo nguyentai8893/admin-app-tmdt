@@ -63,18 +63,6 @@ const AdminChat = () => {
 		};
 	}, [rooms]);
 	console.log(rooms);
-	// useEffect(() => {
-	// 	if (roomId) {
-	// 		socket.emit('joinRoom', roomId);
-	// 		socket.on('loadMessages', (loadedMessages) => {
-	// 			setMessages(loadedMessages);
-	// 		});
-	// 	}
-
-	// 	return () => {
-	// 		socket.off('loadMessages');
-	// 	};
-	// }, [roomId]);
 
 	const sendMessage = () => {
 		if (!message.trim()) {
@@ -133,7 +121,6 @@ const AdminChat = () => {
 		dispatch(loginAction.onLogout());
 		navigate('/login');
 	};
-	console.log(selectedRoom);
 	return (
 		<>
 			<div className={cx('chat-container')}>
