@@ -12,8 +12,13 @@ const SideBar = () => {
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 	const handlerLogout = () => {
-		navigate('/login');
-		dispatch(loginAction.onLogout());
+		const confirmLogout = window.confirm(
+			'Bạn có chắc chắn muốn đăng xuất không?'
+		);
+		if (confirmLogout) {
+			navigate('/login');
+			dispatch(loginAction.onLogout());
+		}
 	};
 	return (
 		<div className={cx('container')}>

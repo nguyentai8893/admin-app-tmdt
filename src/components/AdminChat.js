@@ -126,8 +126,13 @@ const AdminChat = () => {
 		}
 	};
 	const handelLogout = () => {
-		dispatch(loginAction.onLogout());
-		navigate('/login');
+		const confirmLogout = window.confirm(
+			'Bạn có chắc chắn muốn đăng xuất không?'
+		);
+		if (confirmLogout) {
+			dispatch(loginAction.onLogout());
+			navigate('/login');
+		}
 	};
 	return (
 		<>
