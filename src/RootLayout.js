@@ -15,11 +15,11 @@ const apiUrl = process.env.REACT_APP_API_URL;
 const RootLayout = () => {
 	const dispatch = useDispatch();
 	const user = localStorage.getItem('user');
-	if (!user) {
-		const userLocal = localStorage.getItem('user');
-		console.log(userLocal);
-		dispatch(loginAction.onLogin(userLocal));
-	}
+	// if (!user) {
+	// 	const userLocal = localStorage.getItem('user');
+	// 	console.log(userLocal);
+	// 	dispatch(loginAction.onLogin(userLocal));
+	// }
 	const { loading, error, apiRequest } = useAxios();
 	useEffect(() => {
 		const fetchProducts = async () => {
