@@ -37,6 +37,7 @@ const Modal = ({ isOpen, children, id }) => {
 	const handleUpload = async (e) => {
 		const files = e.target.files;
 		const urls = [];
+		console.log('files', files);
 
 		for (let i = 0; i < files.length; i++) {
 			const file = files[i];
@@ -154,13 +155,7 @@ const Modal = ({ isOpen, children, id }) => {
 
 							<label>Upload image (5 images)</label>
 							{id ? (
-								<input
-									type='file'
-									name='image'
-									onChange={(e) => handleUpload(e)}
-									multiple
-									disabled
-								/>
+								<input type='file' name='image' multiple disabled />
 							) : (
 								<input
 									type='file'
