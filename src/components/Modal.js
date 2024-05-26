@@ -50,6 +50,7 @@ const Modal = ({ isOpen, children, id }) => {
 		try {
 			const { name, category, short_desc, long_desc, price, quantity } =
 				postData;
+			console.log('quabtity', quantity);
 			const formDataForServer = {
 				name,
 				category,
