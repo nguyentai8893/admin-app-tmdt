@@ -8,8 +8,6 @@ import { loginAction } from '../store/loginUserSlice';
 
 const cx = classNames.bind(styles);
 const apiUrl = process.env.REACT_APP_API_URL;
-console.log(apiUrl);
-
 const Login = () => {
 	const dispatch = useDispatch();
 
