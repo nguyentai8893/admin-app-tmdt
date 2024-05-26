@@ -13,7 +13,7 @@ const cx = classNames.bind(styles);
 const apiUrl = process.env.REACT_APP_API_URL;
 
 const Modal = ({ isOpen, children, id }) => {
-	const [imageUrl, setImageUrl] = useState('');
+	// const [imageUrl, setImageUrl] = useState('');
 	const [imageUrls, setImageUrls] = useState([]);
 	const [postData, setPostData] = useState({
 		name: '',
