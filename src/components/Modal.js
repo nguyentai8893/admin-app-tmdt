@@ -5,7 +5,6 @@ import classNames from 'classnames/bind';
 import styles from './Modal.module.scss';
 import { useState } from 'react';
 import useAxios from '../hook/useAxios';
-import axios from 'axios';
 import { infoAction } from '../store/infoRenderSlice';
 import { storage } from '../config/firebaseConfig';
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
@@ -25,7 +24,6 @@ const Modal = ({ isOpen, children, id }) => {
 		price: '',
 		quantity: '',
 	});
-	const isOpenFormUpdate = useSelector((state) => state.modal.isOpenFormUpdate);
 	const idUpdate = useSelector((state) => state.modal.idUpdate);
 	const products = useSelector((state) => state.info.productsState);
 	const product = products.filter((f) => f._id == id);
@@ -34,6 +32,7 @@ const Modal = ({ isOpen, children, id }) => {
 		: `${apiUrl}/api/add-product`;
 	const { loading, error, apiRequest } = useAxios();
 	const dispatch = useDispatch();
+	//upload file to firebase
 	const handleUpload = async (e) => {
 		const files = e.target.files;
 		const urls = [];

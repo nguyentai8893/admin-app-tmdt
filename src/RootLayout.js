@@ -7,8 +7,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import useAxios from './hook/useAxios.js';
 import { infoAction } from './store/infoRenderSlice.js';
 import { loginAction } from './store/loginUserSlice.js';
-const cx = classNames.bind(styles);
 
+const cx = classNames.bind(styles);
 const apiUrl = process.env.REACT_APP_API_URL;
 
 const RootLayout = () => {

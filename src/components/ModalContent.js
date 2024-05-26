@@ -25,7 +25,6 @@ const ModalContent = () => {
 
 	const handleUpload = async (e) => {
 		const files = e.target.files;
-		console.log(files);
 		const formData = new FormData();
 
 		for (let i = 0; i < files.length; i++) {
@@ -43,7 +42,6 @@ const ModalContent = () => {
 					},
 				}
 			);
-			console.log(res);
 			setImageUrl(res.data.filesPath);
 		} catch (error) {
 			console.error('Error uploading image:', error);

@@ -38,15 +38,12 @@ const AdminChat = () => {
 
 	useEffect(() => {
 		socket.on('receiveMessage', ({ newMessage }) => {
-			console.log('new', newMessage);
 			setMessages((prevMessages) => [...prevMessages, newMessage]);
 		});
 		socket.on('roomCreated', (roomId) => {
-			console.log('roomCreated', rooms);
 			setRooms((prevRoom) => [...prevRoom, roomId]);
 		});
 		socket.on('roomEnded', (roomId) => {
-			console.log('Phòng đã bị xóa:', roomId);
 			setRooms((prevRooms) =>
 				prevRooms.filter((room) => room.roomId !== roomId)
 			);
@@ -62,7 +59,6 @@ const AdminChat = () => {
 			socket.off('roomEnded');
 		};
 	}, [rooms]);
-	console.log(rooms);
 
 	const sendMessage = () => {
 		if (!message.trim()) {

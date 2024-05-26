@@ -10,7 +10,6 @@ const apiUrl = process.env.REACT_APP_API_URL;
 
 const Register = () => {
 	const navigate = useNavigate();
-	const [data, setData] = useState(null);
 	const [err, setErr] = useState('');
 	const [postData, setPostData] = useState({
 		name: '',
@@ -19,13 +18,6 @@ const Register = () => {
 		phone: '',
 	});
 	const { loading, error, apiRequest } = useAxios();
-
-	const [formData, setFormData] = useState({
-		name: '',
-		email: '',
-		password: '',
-		phone: '',
-	});
 
 	const handelChange = (e) => {
 		e.preventDefault();
@@ -41,7 +33,6 @@ const Register = () => {
 				'post',
 				postData
 			);
-			console.log('res', res);
 
 			if (res && res.status == true) {
 				navigate('/sign-in');

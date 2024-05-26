@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import InfoBoard from './InfoBoard';
 import styles from './Products.module.scss';
 import classNames from 'classnames/bind';
 import { useDispatch, useSelector } from 'react-redux';
