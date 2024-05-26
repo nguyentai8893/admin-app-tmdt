@@ -97,7 +97,6 @@ const AdminChat = () => {
 	}, []);
 
 	const handleRoomClick = (selectedRoomId) => {
-		console.log('selectedRoomId', selectedRoomId);
 		setRoomId(selectedRoomId);
 		setSelectedRoom(selectedRoomId);
 		socket.emit('joinRoom', selectedRoomId);

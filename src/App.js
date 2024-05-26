@@ -14,7 +14,14 @@ import useAxios from './hook/useAxios';
 import DetailOrder from './components/DetailOrder';
 import AdminChat from './components/AdminChat';
 const authenticated = () => {
-	const user = localStorage.getItem('user');
+	const user = useSelector((state) => state.auth.user);
+
+	useEffect(() => {
+		const storedUser = localStorage.getItem('user');
+		if (storedUser && !user) {
+			dispatch(loginAction.onLogin(JSON.parse(storedUser)));
+		}
+	}, [user, dispatch]);
 	if (user) {
 		return true;
 	}
