@@ -55,9 +55,9 @@ const Modal = ({ isOpen, children, id }) => {
 				category,
 				short_desc,
 				long_desc,
+				quantity,
 				image: imageUrls,
 				price,
-				quantity,
 			};
 			const res = await apiRequest(URL, 'post', formDataForServer);
 			if (res.status == 201) {
