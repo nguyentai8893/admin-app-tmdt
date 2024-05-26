@@ -37,20 +37,15 @@ const Modal = ({ isOpen, children, id }) => {
 	const handleUpload = async (e) => {
 		const files = e.target.files;
 		const urls = [];
-		console.log('files', files);
-
 		for (let i = 0; i < files.length; i++) {
 			const file = files[i];
 			const storageRef = ref(storage, `images/${file.name}`);
 			await uploadBytes(storageRef, file);
 			const url = await getDownloadURL(storageRef);
-			console.log('urls', url);
 			urls.push(url);
 		}
-
 		setImageUrls(urls);
 	};
-	console.log(imageUrls);
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		try {
@@ -66,8 +61,6 @@ const Modal = ({ isOpen, children, id }) => {
 				quantity,
 			};
 			const res = await apiRequest(URL, 'post', formDataForServer);
-			console.log('Product added successfully:', res);
-
 			if (res.status == 201) {
 				dispatch(infoAction.addProduct(res.newProduct));
 			}

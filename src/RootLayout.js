@@ -4,7 +4,6 @@ import classNames from 'classnames/bind';
 import styles from './components/Dashboard.module.scss';
 import SideBar from './components/SideBar.js';
 import { useDispatch, useSelector } from 'react-redux';
-import DashBoard from './components/Dashboard.js';
 import useAxios from './hook/useAxios.js';
 import { infoAction } from './store/infoRenderSlice.js';
 import { loginAction } from './store/loginUserSlice.js';
@@ -24,7 +23,6 @@ const RootLayout = () => {
 	useEffect(() => {
 		const fetchProducts = async () => {
 			const res = await apiRequest(`${apiUrl}/api/products`, 'get');
-			console.log(res);
 			if (res) {
 				dispatch(infoAction.products(res.products));
 			}
