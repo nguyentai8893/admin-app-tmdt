@@ -8,7 +8,7 @@ import useAxios from '../hook/useAxios';
 import axios from 'axios';
 import { infoAction } from '../store/infoRenderSlice';
 import { storage } from '../config/firebaseConfig';
-import { getDownloadURL, uploadBytes } from 'firebase/storage';
+import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 
 const cx = classNames.bind(styles);
 const apiUrl = process.env.REACT_APP_API_URL;
