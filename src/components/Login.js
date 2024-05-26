@@ -75,9 +75,9 @@ const Login = () => {
 						<button className={cx('btn')} onClick={handlerSignIn}>
 							Sign IN
 						</button>
-						<p>
+						{/* <p>
 							Create an account? <Link to='/register'>Click</Link>
-						</p>
+						</p> */}
 					</div>
 				</div>
 			</div>
