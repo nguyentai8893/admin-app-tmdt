@@ -7,12 +7,15 @@ import { useState } from 'react';
 import useAxios from '../hook/useAxios';
 import axios from 'axios';
 import { infoAction } from '../store/infoRenderSlice';
+import { storage } from '../config/firebaseConfig';
+import { getDownloadURL, uploadBytes } from 'firebase/storage';
 
 const cx = classNames.bind(styles);
 const apiUrl = process.env.REACT_APP_API_URL;
 
 const Modal = ({ isOpen, children, id }) => {
 	const [imageUrl, setImageUrl] = useState('');
+	const [imageUrls, setImageUrls] = useState([]);
 	const [postData, setPostData] = useState({
 		name: '',
 		category: '',
@@ -26,41 +29,27 @@ const Modal = ({ isOpen, children, id }) => {
 	const idUpdate = useSelector((state) => state.modal.idUpdate);
 	const products = useSelector((state) => state.info.productsState);
 	const product = products.filter((f) => f._id == id);
-	console.log(id);
-
 	const URL = id
 		? `${apiUrl}/api/update-product/${id}`
 		: `${apiUrl}/api/add-product`;
 	const { loading, error, apiRequest } = useAxios();
 	const dispatch = useDispatch();
-
 	const handleUpload = async (e) => {
 		const files = e.target.files;
-		const formData = new FormData();
+		const urls = [];
 
 		for (let i = 0; i < files.length; i++) {
-			formData.append('images', files[i]);
+			const file = files[i];
+			const storageRef = ref(storage, `images/${file.name}`);
+			await uploadBytes(storageRef, file);
+			const url = await getDownloadURL(storageRef);
+			console.log('urls', url);
+			urls.push(url);
 		}
 
-		try {
-			const res = await axios.post(
-				`${apiUrl}/api/upload-image`,
-				formData,
-
-				{
-					headers: {
-						'Content-Type': 'multipart/form-data', // Đặt header cho dữ liệu FormData
-					},
-				}
-			);
-
-			console.log(res);
-			setImageUrl(res.data.filesPath);
-		} catch (error) {
-			console.error('Error uploading image:', error);
-		}
+		setImageUrls(urls);
 	};
-	console.log(imageUrl);
+	console.log(imageUrls);
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		try {
@@ -71,7 +60,7 @@ const Modal = ({ isOpen, children, id }) => {
 				category,
 				short_desc,
 				long_desc,
-				image: imageUrl,
+				image: imageUrls,
 				price,
 				quantity,
 			};
