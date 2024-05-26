@@ -26,11 +26,9 @@ const ModalContent = () => {
 	const handleUpload = async (e) => {
 		const files = e.target.files;
 		const formData = new FormData();
-
 		for (let i = 0; i < files.length; i++) {
 			formData.append('images', files[i]);
 		}
-
 		try {
 			const res = await axios.post(
 				`${apiUrl}/api/upload-image`,
@@ -47,7 +45,6 @@ const ModalContent = () => {
 			console.error('Error uploading image:', error);
 		}
 	};
-	console.log(imageUrl);
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		try {
